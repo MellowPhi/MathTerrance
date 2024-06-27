@@ -1,4 +1,4 @@
-from calc import multiply
+from calc import multiply 
 
 def main():
     print("Welcome to the Python Calculator!")
