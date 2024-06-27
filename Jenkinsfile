@@ -21,6 +21,7 @@ pipeline {
         
         stage('Push Image To Docker Hub') {
             steps {
+                // Login Dockerhub and push to docker hub
                 script {
                     withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
                     sh 'docker login -u mellowphi -p ${dockerhubpwd}'
