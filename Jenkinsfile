@@ -14,7 +14,7 @@ pipeline {
             steps {
                 // Build Docker image
                 script {
-                    bat 'docker build -t mellowphi/terryology-calc .'
+                    sh 'docker build -t mellowphi/terryology-calc .'
                 }
             }
         }
@@ -22,9 +22,9 @@ pipeline {
         stage('Push Image To Docker Hub') {
             steps {
                 script {
-                withCredentials([string(credentialsId: 'dockerhubcred', variable: 'dockerhubcred')]) {
-                    bat 'docker login -u mellowphi -p ${dockerhubcred}'
-                    bat 'docker push mellowphi/terryology-calc'
+                    withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
+                    sh 'docker login -u mellowphi -p ${dockerhubpwd}'
+                    sh 'docker push mellowphi/terryology-calc'
                 }
                 }
                 
